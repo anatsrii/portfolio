@@ -1,0 +1,17 @@
+/* App.css */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 100px; /* กำหนดความกว้างของแถบด้านข้างตามต้องการ */
+  background: inherit; /* สีพื้นหลังของแถบด้านข้าง */
+  padding: 0.5rem;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 1rem;
+}
+

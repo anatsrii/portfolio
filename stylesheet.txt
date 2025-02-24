@@ -1,0 +1,3 @@
+color
+background tex = #2C2B4B
+text color grey = #c6c6dc
