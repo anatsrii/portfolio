@@ -1,0 +1,108 @@
+.contact-container {
+  margin-right: 1rem;
+  max-width: 300px;
+  width: 90%;
+  max-height: 50vh;
+  margin: 50px 20px 50px 0; /* เพิ่มระยะห่างด้านบนและด้านล่าง */
+  /* padding: 25px; */
+  /* border-radius: 15px; */
+  background: linear-gradient(135deg, #ffffff, #f2f2f2); /* Gradient Background */
+  /* background-color: #2C2B4B; */
+  color: #c6c6dc;
+  font-family: 'pixel8bit';
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15); /* เงาดูมีมิติ */
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: auto; /* เพิ่ม overflow: auto เพื่อให้มี scroll bar ถ้าขนาดเกิน */
+}
+
+.contact-container::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 123, 255, 0.15);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.contact-container:hover {
+  transform: translateY(-15px); /* ยก container ขึ้นเมื่อ hover */
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  font-family: 'pixel8bit';
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 90%;
+  padding: 12px;
+  border: none;
+  border-radius: 3px;
+  background: #fff;
+  font-size: 1rem;
+  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5);
+}
+
+.contact-form button {
+  margin: 20px 0 0 0;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  font-family: 'pixel8bit';
+}
+
+.contact-form button:hover {
+  background: linear-gradient(90deg, #0056b3, #003f80);
+  transform: scale(1.05);
+}
+
+/* :placeholder-shown {
+  color: #666;
+  font-family: 'chulabhon';
+} */
+
+.contact-content {
+  padding: 20px;
+  z-index: 1;
+}
+
+.contact-header {
+  position: relative;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  max-width: 50px;
+  max-height: 50px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-weight: bold;
+  color: #c11f51;
+}
