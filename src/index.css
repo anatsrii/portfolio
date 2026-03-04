@@ -1,5 +1,5 @@
 body {
-  background-image: url('/Nic-chan.png'); /* เปลี่ยนเป็น path ของรูปที่คุณใช้ */
+  background-image: url('/bg1.jpg'); /* เปลี่ยนเป็น path ของรูปที่คุณใช้ */
   background-size: cover;
   background-position: center;
   background-size: cover;
@@ -16,5 +16,15 @@ body {
 @font-face {
   font-family: 'pixel8bit';
   src: url('./assets/pixel8bit.ttf');
+}
+
+@font-face {
+  font-family: 'mapha';
+  src: url('./assets/mahpa.ttf');
+}
+
+@font-face {
+  font-family: 'chulabhon';
+  src: url('./assets/chulahbhon.otf');
 }
 

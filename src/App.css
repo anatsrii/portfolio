@@ -1,17 +1,71 @@
-/* App.css */
-.container {
+/* App.css - Desktop Environment */
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 48px; /* Space for taskbar */
+}
+
+.desktop {
+  padding: 20px;
+  padding-left: 100px; /* Space for sidebar */
+  min-height: calc(100vh - 48px);
+  transition: padding-left 0.3s ease;
+}
+
+/* When sidebar is closed */
+.desktop:has(.desktop-nav.closed) {
+  padding-left: 20px;
+}
+
+.windows-container {
   display: flex;
-  height: 100vh;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.sidebar {
-  width: 100px; /* กำหนดความกว้างของแถบด้านข้างตามต้องการ */
-  background: inherit; /* สีพื้นหลังของแถบด้านข้าง */
-  padding: 0.5rem;
+/* Window positioning */
+.window-container {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  animation: windowOpen 0.3s ease-out;
 }
 
-.content {
-  flex-grow: 1;
-  padding: 1rem;
+.window-container.minimized {
+  display: none;
 }
 
+@keyframes windowOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .desktop {
+    padding-left: 20px;
+    padding-top: 80px;
+  }
+  
+  .windows-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .window-container {
+    max-width: 100%;
+    min-width: auto;
+  }
+}

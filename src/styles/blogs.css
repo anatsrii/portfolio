@@ -1,0 +1,128 @@
+/* Blogs Window Styles */
+.blogs-content {
+  padding: 0;
+}
+
+.blogs-layout {
+  display: flex;
+  min-height: 400px;
+}
+
+.blogs-sidebar {
+  width: 200px;
+  background: rgba(0, 0, 0, 0.2);
+  border-right: 1px solid #3a3a5a;
+  padding: 16px;
+}
+
+.blogs-sidebar h3 {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #3a3a5a;
+}
+
+.blog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-list li {
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #a0a0c0;
+  transition: all 0.2s;
+  margin-bottom: 4px;
+}
+
+.blog-list li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.blog-list li.active {
+  background: rgba(74, 158, 255, 0.2);
+  color: #4a9eff;
+  border-left: 3px solid #4a9eff;
+}
+
+.blogs-article {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.blogs-article h1 {
+  color: #4a9eff;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.blogs-article h2 {
+  color: #6a9eff;
+  font-size: 20px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.blogs-article p {
+  color: #a0a0c0;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.blogs-article code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #ffcc00;
+  font-family: 'Courier New', monospace;
+}
+
+.blogs-article pre {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.blogs-article pre code {
+  background: none;
+  padding: 0;
+  color: #c6c6dc;
+}
+
+.blogs-article ul,
+.blogs-article ol {
+  color: #a0a0c0;
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+
+.blogs-article li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.blogs-article a {
+  color: #4a9eff;
+  text-decoration: none;
+}
+
+.blogs-article a:hover {
+  text-decoration: underline;
+}
+
+.blogs-article blockquote {
+  border-left: 4px solid #4a9eff;
+  padding-left: 16px;
+  margin: 16px 0;
+  color: #8080a0;
+  font-style: italic;
+}

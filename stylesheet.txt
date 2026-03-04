@@ -1,3 +1,6 @@
 color
 background tex = #2C2B4B
 text color grey = #c6c6dc
+background color =  #344466
+pink #f85e88
+pink red #c11f51

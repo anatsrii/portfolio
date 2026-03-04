@@ -1,19 +1,26 @@
-// App.jsx
 import './App.css';
 import Home from './components/Home';
 import Header from './components/Header';
+import About from './components/About';
+import Contact from './components/Contact';
+import Projects from './components/Projects';
+import BlogsContent from './components/BlogsContent';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
-      <div className="container">
-        <aside className="sidebar">
-          <Header />
-        </aside>
-        <main className="content">
+      <Header />
+      <main className="desktop">
+        <div className="windows-container">
           <Home />
-        </main>
-      </div>
+          <About />
+          <Contact />
+          <Projects />
+          <BlogsContent />
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }

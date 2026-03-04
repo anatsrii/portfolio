@@ -1,34 +1,103 @@
-nav {
-  margin-left: 0.1rem;
+.desktop-nav {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  z-index: 100;
+  padding: 1rem 0.5rem;
+  background: rgba(26, 26, 46, 0.95);
+  border-radius: 0 12px 12px 0;
+  backdrop-filter: blur(8px);
+  border: 2px solid #4a4a6a;
+  border-left: none;
+  transition: transform 0.3s ease;
 }
-nav ul {
+
+.desktop-nav.closed {
+  transform: translateY(-50%) translateX(-100%);
+}
+
+.desktop-nav ul {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 20px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-nav li {
+.desktop-nav li {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   font-weight: bolder;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  position: relative;
 }
 
-img {
-  width: 60px;
-  height: 60px;
-  /* border-radius: 50%; */
+.desktop-nav li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
 }
 
-span {
+.desktop-nav li.active::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: #4a9eff;
+  border-radius: 0 4px 4px 0;
+}
+
+.desktop-nav li.active .nav-text {
+  color: #4a9eff;
+}
+
+.desktop-nav img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.desktop-nav li:hover img {
+  transform: scale(1.1);
+}
+
+.nav-text {
   margin: 2px;
   background-color: #2C2B4B;
   color: #c6c6dc;
   text-align: center;
-  align-items: center;
-  padding: 2px 2px 2px 2px;
-  line-height: 0.5rem;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  font-family: 'pixel8bit', sans-serif;
+  white-space: nowrap;
+}
+
+/* Responsive: ซ่อน nav บน mobile */
+@media (max-width: 768px) {
+  .desktop-nav {
+    top: auto;
+    bottom: 60px;
+    transform: translateY(0) translateX(-100%);
+    border-radius: 0 12px 12px 0;
+  }
+  
+  .desktop-nav.open {
+    transform: translateY(0) translateX(0);
+  }
+  
+  .desktop-nav.closed {
+    transform: translateY(0) translateX(-100%);
+  }
 }

@@ -1,52 +1,51 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { openWindow } from '../stores/pageReducer';
 import computerIcon from '../assets/computer.png';
 import profileIcon from '../assets/profile.png';
 import robotIcon from '../assets/robot.png';
 import mailIcon from '../../email5rm.png';
+import blogIcon from '../assets/blog.png';
 import '../styles/header.css';
-import blog from '../assets/blog.png';
-import { useDispatch } from 'react-redux';
-import { toggleContact, toggleHome, toggleAbout, toggleProjects, toggleBlogs} from '../stores/pageReducer';
-import { useSelector } from 'react-redux';
 
+const iconMap = {
+  computer: computerIcon,
+  profile: profileIcon,
+  robot: robotIcon,
+  mail: mailIcon,
+  blog: blogIcon,
+};
 
 function Header() {
-  const { home,contact, about, projects, blogs } = useSelector((state) => state.pages);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const { windows, sidebarOpen } = useSelector((state) => state.pages);
 
-  const handlerBlogs = () => {
-    dispatch(toggleContact(true));
-    dispatch(toggleHome(true));
-    dispatch(toggleAbout(true));
-    dispatch(toggleProjects(true));
-    dispatch(toggleBlogs(blogs));
-  }
+  const menuItems = [
+    { name: 'home', icon: computerIcon, labelKey: 'menu.home' },
+    { name: 'about', icon: profileIcon, labelKey: 'menu.about' },
+    { name: 'contact', icon: mailIcon, labelKey: 'menu.contact' },
+    { name: 'projects', icon: robotIcon, labelKey: 'menu.projects' },
+    { name: 'blogs', icon: blogIcon, labelKey: 'menu.blog' },
+  ];
+
+  const handleOpenWindow = (windowName) => {
+    dispatch(openWindow(windowName));
+  };
 
   return (
-    <nav>
+    <nav className={`desktop-nav ${sidebarOpen ? 'open' : 'closed'}`}>
       <ul>
-        <li onClick={() => dispatch(toggleHome(home))}>
-          <img src={computerIcon} alt="Home" />
-          <span className='nav-text'>Home</span>
-        </li>
-        <li onClick={() => dispatch(toggleAbout(about))}>
-          <img src={profileIcon} alt="About" />
-          <span className='nav-text'>About</span>
-        </li>
-        <li onClick={() => dispatch(toggleContact(contact))}>
-  
-          <img src={mailIcon} alt="Contact" />
-          <span className='nav-text'>Contact</span>
-     
-        </li>
-
-        <li onClick={() => dispatch(toggleProjects(projects))}>
-          <img src={robotIcon} alt="Projects" />
-          <span className='nav-text'>Projects</span>
-        </li>
-        <li onClick={() => handlerBlogs()}>
-          <img src={blog} alt="Blog" />
-          <span className='nav-text'>Blog</span>
-        </li>
+        {menuItems.map((item) => (
+          <li 
+            key={item.name}
+            onClick={() => handleOpenWindow(item.name)}
+            className={windows[item.name]?.state !== 'closed' ? 'active' : ''}
+          >
+            <img src={item.icon} alt={t(item.labelKey)} />
+            <span className='nav-text'>{t(item.labelKey)}</span>
+          </li>
+        ))}
       </ul>
     </nav>
   );

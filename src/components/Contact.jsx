@@ -1,40 +1,84 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import WindowFrame from './WindowFrame';
+import mailIcon from '../../email5rm.png';
 import '../styles/contact.css';
-import { toggleContact } from '../stores/pageReducer';
-import { useDispatch, useSelector } from 'react-redux';
-
 
 function Contact() {
-  const dispatch = useDispatch();
-  const {contact} = useSelector((state) => state.pages);
+  const { t } = useTranslation();
+  const { windows, currentLanguage } = useSelector((state) => state.pages);
+  const contactWindow = windows.contact;
+
   const submitForm = (e) => {
     e.preventDefault();
-    alert('Thank you for your message! We will get back to you soon.');
-  }
+    alert(t('contact.success'));
+  };
+
+  if (contactWindow.state === 'closed') return null;
+
+  const getTitle = () => currentLanguage === 'th' ? contactWindow.titleTh : contactWindow.title;
+
   return (
-    <>
-      {contact && (
-        <div className="contact-container">
-          <div className="contact-header">
-            <button className="toggle-btn" onClick={() => dispatch(toggleContact(contact))}>
-              X
-            </button>
-          </div>
-        <div className="contact-content">
-            <h2>Contact Mr.Jane</h2>
+    <div className={`window-container ${contactWindow.state === 'minimized' ? 'minimized' : ''}`}>
+      <WindowFrame 
+        title={getTitle()} 
+        windowName="contact"
+        icon={mailIcon}
+      >
+        <div className="contact-content-wrapper">
+          <h2>{t('contact.title')}</h2>
+          <p className="contact-intro">{t('contact.subtitle')}</p>
+          
           <form className="contact-form" onSubmit={submitForm}>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" required />
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-            <label htmlFor="message">Message:</label>
-            <textarea id="message" name="message" required />
-            <button type="submit">Send</button>
+            <div className="form-group">
+              <label htmlFor="name">{t('contact.name')}</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                placeholder={t('contact.namePlaceholder')}
+              />
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="email">{t('contact.email')}</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                placeholder={t('contact.emailPlaceholder')}
+              />
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="message">{t('contact.message')}</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                required 
+                placeholder={t('contact.messagePlaceholder')}
+                rows={5}
+              />
+            </div>
+            
+            <button type="submit" className="submit-btn">
+              {t('contact.send')}
+            </button>
           </form>
+
+          <div className="contact-links">
+            <h3>{t('contact.findMe')}</h3>
+            <div className="social-links">
+              <a href="#" className="social-link">GitHub</a>
+              <a href="#" className="social-link">LinkedIn</a>
+              <a href="#" className="social-link">Twitter</a>
+            </div>
+          </div>
         </div>
-        </div>
-      )}
-      </>
+      </WindowFrame>
+    </div>
   );
 }
 

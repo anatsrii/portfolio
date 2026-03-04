@@ -1,108 +1,121 @@
-.contact-container {
-  margin-right: 1rem;
-  max-width: 300px;
-  width: 90%;
-  max-height: 50vh;
-  margin: 50px 20px 50px 0; /* เพิ่มระยะห่างด้านบนและด้านล่าง */
-  /* padding: 25px; */
-  /* border-radius: 15px; */
-  background: linear-gradient(135deg, #ffffff, #f2f2f2); /* Gradient Background */
-  /* background-color: #2C2B4B; */
-  color: #c6c6dc;
-  font-family: 'pixel8bit';
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15); /* เงาดูมีมิติ */
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  overflow: auto; /* เพิ่ม overflow: auto เพื่อให้มี scroll bar ถ้าขนาดเกิน */
+/* Contact Window Styles */
+.contact-content-wrapper {
+  padding: 16px;
 }
 
-.contact-container::before {
-  content: "";
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  width: 200px;
-  height: 200px;
-  background: rgba(0, 123, 255, 0.15);
-  border-radius: 50%;
-  z-index: 0;
+.contact-content-wrapper h2 {
+  color: #4a9eff;
+  font-size: 20px;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
-.contact-container:hover {
-  transform: translateY(-15px); /* ยก container ขึ้นเมื่อ hover */
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+.contact-intro {
+  text-align: center;
+  color: #8080a0;
+  font-size: 14px;
+  margin-bottom: 24px;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  font-family: 'pixel8bit';
+  gap: 16px;
 }
 
-.contact-form input,
-.contact-form textarea {
-  width: 90%;
-  padding: 12px;
-  border: none;
-  border-radius: 3px;
-  background: #fff;
-  font-size: 1rem;
-  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.form-group label {
+  color: #c6c6dc;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  background: #2a2a4a;
+  border: 2px solid #3a3a5a;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #fff;
+  font-family: 'pixel8bit', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
   outline: none;
-  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5);
+  border-color: #4a9eff;
 }
 
-.contact-form button {
-  margin: 20px 0 0 0;
-  background: linear-gradient(90deg, #007bff, #0056b3);
-  color: white;
-  border: none;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 3px;
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #606080;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-btn {
+  background: linear-gradient(180deg, #4a9eff 0%, #3a7acc 100%);
+  color: #fff;
+  border: 2px outset #5aafff;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-family: 'pixel8bit', sans-serif;
+  font-size: 14px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  font-weight: bold;
-  font-family: 'pixel8bit';
+  transition: all 0.2s;
+  margin-top: 8px;
 }
 
-.contact-form button:hover {
-  background: linear-gradient(90deg, #0056b3, #003f80);
-  transform: scale(1.05);
+.submit-btn:hover {
+  background: linear-gradient(180deg, #5aafff 0%, #4a8add 100%);
+  transform: translateY(-2px);
 }
 
-/* :placeholder-shown {
-  color: #666;
-  font-family: 'chulabhon';
-} */
-
-.contact-content {
-  padding: 20px;
-  z-index: 1;
+.submit-btn:active {
+  border-style: inset;
+  transform: translateY(0);
 }
 
-.contact-header {
-  position: relative;
+.contact-links {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #3a3a5a;
+  text-align: center;
 }
 
-.toggle-btn {
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  max-width: 50px;
-  max-height: 50px;
-  align-items: center;
+.contact-links h3 {
+  color: #8080a0;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.social-links {
+  display: flex;
   justify-content: center;
-  border: none;
-  font-weight: bold;
-  color: #c11f51;
+  gap: 16px;
+}
+
+.social-link {
+  color: #4a9eff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 12px;
+  border: 1px solid #4a9eff;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.social-link:hover {
+  background: #4a9eff;
+  color: #fff;
 }
